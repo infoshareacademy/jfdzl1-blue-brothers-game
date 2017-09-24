@@ -1,1 +1,14 @@
+#background {
+    position: relative;
 
+}
+
+#player {
+    position: absolute;
+    left: 1100px;
+    top: 190px;
+}
+
+.game {
+    text-align: center;
+}
