@@ -1,84 +1,66 @@
-const canvas = document.querySelector('canvas');
-const ctx = canvas.getContext('2d');
-
-canvas.width = 1200;
-canvas.height = 600;
-
-const cw = canvas.width;
-const ch = canvas.height;
-
-const speed = 25;
-
-
-const playerSize = 100;
-let playerX = 30;
-let playerY = 30;
-
-const orbSize = 55;
-let orbX = cw / 2;
-let orbY = ch / 2;
-
-
-function orb() {
-    ctx.fillStyle = 'white';
-    ctx.fillRect(orbX, orbY, orbSize, orbSize);
-
+function Game(container, bricksPlacementArray) {
+    this.board = null
+    this.container = container
+    this.bricksPlacementArray = bricksPlacementArray
+    this.step = 5
+    this.init()
 }
-
-function map() {
-    ctx.fillStyle = 'darkblue';
-    ctx.fillRect(0, 0, cw, ch);
+Game.prototype.init = function () {
+    this.renderBoard()
+    this.renderWalls()
 }
-
-function player() {
-    ctx.fillStyle = 'red';
-    ctx.fillRect(playerX, playerY, playerSize, playerSize);
-
-    if (playerY <= 0) {
-        playerY = 0;
-    }
-    if (playerX <= 0) {
-        playerX = 0;
-    }
-    if (playerY > 500) {
-        playerY = 500 ;
-    }
-    if (playerX > 1100) {
-        playerX = 1100 ;
-    }
+Game.prototype.renderWalls = function () {
+    var self = this
+    this.bricksPlacementArray.forEach(function(arrayRow, indexY){
+        arrayRow.forEach(function(isBrick, indexX){
+            if(isBrick){
+                self.renderWallBrick(indexX,indexY)
+            }
+        })
+    })
 }
-
-
-
-window.addEventListener('keydown', function (event) {
-    switch (event.keyCode) {
-        case 37:
-            playerX -= speed;
-            console.log('Lewo');
-            break;
-
-        case 38:
-            playerY -= speed;
-            console.log('Góra');
-            break;
-
-        case 39:
-            playerX += speed;
-            console.log('Prawo');
-            break;
-
-        case 40:
-            playerY += speed;
-            console.log('Dół');
-            break;
-    }
-}, false);
-
-function game() {
-    map();
-    orb();
-    player()
+Game.prototype.renderBoard = function () {
+    this.board = document.createElement('div')
+    this.board.className = 'board'
+    this.board.style.position = 'relative'
+    this.board.style.width = '50vw'
+    this.board.style.height = '50vw'
+    this.board.style.backgroundColor = 'white'
+    this.container.appendChild(this.board)
 }
-
-game();
-setInterval(game, 5 / 5);
+Game.prototype.renderWallBrick = function (x, y) {
+    var xPos = this.step * x
+    var yPos = this.step * y
+    var brick = document.createElement('div')
+    brick.className = 'wall-brick'
+    brick.style.backgroundColor = 'black';
+    brick.style.position = 'absolute'
+    brick.style.width =  this.step + '%'
+    brick.style.height = this.step + '%'
+    brick.style.left = xPos + '%'
+    brick.style.top = yPos + '%'
+    this.board.appendChild(brick)
+}
+var exampleArr = [
+    [0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+]
+var game1 = new Game(document.querySelector('.game-container'), exampleArr)
