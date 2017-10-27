@@ -47,7 +47,7 @@ Game.prototype.renderBoard = function () {
     this.board.style.width = '50vw';
     this.board.style.height = '40vw';
     this.board.style.backgroundColor = 'white';
-    this.board.style.backgroundImage = "url('/image/obrazek.png')";
+    this.board.style.backgroundImage = "url('https://raw.githubusercontent.com/infoshareacademy/jfdzl1-blue-brothers-game/develop/image/obrazek.png')";
     this.container.appendChild(this.board)
 }
 
