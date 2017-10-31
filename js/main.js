@@ -10,6 +10,7 @@ Game.prototype.init = function () {
     this.renderWalls()
     this.renderPlayer()
     this.changePlayerPositon()
+    this.renderFood()
 }
 Game.prototype.renderWalls = function () {
     var self = this
@@ -79,6 +80,19 @@ Game.prototype.renderPlayer = function (x , y) {
     player.style.left = xPos + '%'
     player.style.top = yPos + '%'
     this.board.appendChild(player)
+}
+
+Game.prototype.renderFood = function () {
+    this.board = document.createElement('div');
+    this.board.className = 'food';
+    this.board.style.position = 'relative';
+    this.board.style.width = '2vw';
+    this.board.style.height = '2vw';
+    this.board.style.backgroundColor = 'white';
+    this.board.style.imageOrientation = '';
+    this.board.style.backgroundImage = "url('https://raw.githubusercontent.com/infoshareacademy/jfdzl1-blue-brothers-game/develop/image/obrazek.png')";
+    //this.board.style.backgroundSize = '';
+    this.container.appendChild(this.board)
 }
 var exampleArr = [
     [1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
