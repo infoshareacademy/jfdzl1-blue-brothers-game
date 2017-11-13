@@ -10,6 +10,7 @@ Game.prototype.init = function () {
     this.renderWalls()
     this.renderPlayer()
     this.changePlayerPositon()
+    this.renderFood() //renderowanie jedzonka :)
 }
 
 Game.prototype.renderWalls = function () {
@@ -22,6 +23,15 @@ Game.prototype.renderWalls = function () {
         })
     })
 }
+
+//renderowanie jedzonka prototyp
+Game.prototype.renderFood = function(){
+
+}
+
+
+
+//renderowanie jedzonka prototyp koniec
 
 
 
@@ -50,7 +60,7 @@ Game.prototype.renderBoard = function () {
     this.board.style.width = '51vw';
     this.board.style.height = '40vw';
     this.board.style.backgroundColor = 'white';
-    //this.board.style.imageOrientation = '';
+    this.board.style.imageOrientation = '';
     this.board.style.backgroundImage = "url('https://raw.githubusercontent.com/infoshareacademy/jfdzl1-blue-brothers-game/develop/image/obrazek.png')";
     this.board.style.backgroundSize = 'cover';
     this.container.appendChild(this.board)
@@ -83,6 +93,7 @@ Game.prototype.renderPlayer = function (x , y) {
     player.style.top = yPos + '%'
     this.board.appendChild(player)
 }
+
 
 
 var exampleArr = [
