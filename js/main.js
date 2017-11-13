@@ -3,6 +3,7 @@ function Game(container, bricksPlacementArray) {
     this.container = container
     this.bricksPlacementArray = bricksPlacementArray
     this.step = 3.1;
+
     this.init()
 }
 Game.prototype.init = function () {
@@ -22,6 +23,8 @@ Game.prototype.renderWalls = function () {
     })
 }
 
+
+
 Game.prototype.changePlayerPositon = function (newX, newY) {
     if (newX >= 0
         &&
@@ -35,9 +38,12 @@ Game.prototype.changePlayerPositon = function (newX, newY) {
     ) {
         this.playerPosition.x = newX
         this.playerPosition.y = newY
+
     }
-    this.render(this.boardArray, this.playerPosition)
+
+
 }
+
 
 
 Game.prototype.renderBoard = function () {
@@ -68,7 +74,7 @@ Game.prototype.renderWallBrick = function (x, y) {
 }
 
 Game.prototype.renderPlayer = function (x , y) {
-    var xPos = this.step * x
+    var xPos = this.step * 7
     var yPos = this.step * y
     var player = document.createElement('div')
     player.className = 'wall-brick'
@@ -79,7 +85,15 @@ Game.prototype.renderPlayer = function (x , y) {
     player.style.left = xPos + '%'
     player.style.top = yPos + '%'
     this.board.appendChild(player)
+
 }
+
+
+
+
+
+
+
 var exampleArr = [
     [1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
     [1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
@@ -118,6 +132,8 @@ var exampleArr = [
 
 
 ]
+
+
 
 
 var game1 = new Game(document.querySelector('.game-container'), exampleArr)
