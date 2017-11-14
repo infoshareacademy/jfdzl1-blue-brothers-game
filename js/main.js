@@ -1,140 +1,113 @@
-function Game(container, bricksPlacementArray) {
-    this.board = null
-    this.container = container
-    this.bricksPlacementArray = bricksPlacementArray
-    this.step = 3.1;
-
-    this.init()
-}
-Game.prototype.init = function () {
-    this.renderBoard()
-    this.renderWalls()
-    this.renderPlayer()
-    this.changePlayerPositon()
-}
-Game.prototype.renderWalls = function () {
-    var self = this
-    this.bricksPlacementArray.forEach(function(arrayRow, indexY){
-        arrayRow.forEach(function(isBrick, indexX){
-            if(isBrick){
-                self.renderWallBrick(indexX,indexY)
-            }
-        })
-    })
-}
-
-
-
-Game.prototype.changePlayerPositon = function (newX, newY) {
-    if (newX >= 0
-        &&
-        newY >= 0
-        &&
-        newX < this.boardArray[0].length
-        &&
-        newY < this.boardArray.length
-        &&
-        this.boardArray[newY][newX] === 0
-    ) {
-        this.playerPosition.x = newX
-        this.playerPosition.y = newY
-
-    }
-
-
-}
-
-
-
-Game.prototype.renderBoard = function () {
-    this.board = document.createElement('div');
-    this.board.className = 'board';
-    this.board.style.position = 'relative';
-    this.board.style.width = '51vw';
-    this.board.style.height = '40vw';
-    this.board.style.backgroundColor = 'white';
-    this.board.style.imageOrientation = '';
-    this.board.style.backgroundImage = "url('https://raw.githubusercontent.com/infoshareacademy/jfdzl1-blue-brothers-game/develop/image/obrazek.png')";
-    this.board.style.backgroundSize = 'cover';
-    this.container.appendChild(this.board)
-}
-
-Game.prototype.renderWallBrick = function (x, y) {
-    var xPos = this.step * x
-    var yPos = this.step * y
-    var brick = document.createElement('div')
-    brick.className = 'wall-brick'
-    brick.style.backgroundColor = 'black';
-    brick.style.position = 'absolute'
-    brick.style.width =  this.step + '%'
-    brick.style.height = this.step + '%'
-    brick.style.left = xPos + '%'
-    brick.style.top = yPos + '%'
-    this.board.appendChild(brick)
-}
-
-Game.prototype.renderPlayer = function (x , y) {
-    var xPos = this.step * 7
-    var yPos = this.step * y
-    var player = document.createElement('div')
-    player.className = 'wall-brick'
-    player.style.backgroundColor = 'red';
-    player.style.position = 'absolute'
-    player.style.width =  this.step + '%'
-    player.style.height = this.step + '%'
-    player.style.left = xPos + '%'
-    player.style.top = yPos + '%'
-    this.board.appendChild(player)
-
-}
-
-
-
-
-
-
-
-var exampleArr = [
-    [1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-    [1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1],
-    [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
-    [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
-    [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
-    [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
-    [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
-    [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
-    [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
-    [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
-    [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1],
-    [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-    [1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
-    [1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-
-
-
-
+var map = [
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 ],
+    [0, 9, 10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,0 ],
+    [0, 10,1, 0, 0, 0, 0, 0, 6, 10,5, 10,8, 0, 0, 0, 0, 0, 2, 10,0 ],
+    [0, 10,0, 10,10,10,10,10,10,10,0, 10,10,10,10,10,10,10,0, 10,0 ],
+    [0, 10,0, 11,8, 0, 0, 0, 6, 10,0, 10,8, 0, 0, 0, 6, 11,0, 10,0 ],
+    [0, 10,0, 10,10,10,10,10,10,10,0, 10,10,10,10,10,10,10,0, 10,0 ],
+    [0, 10,4, 0, 0, 0, 0, 0, 6, 10,0, 10,8, 0, 0, 0, 0, 0, 3, 10,0 ],
+    [0, 10,10,10,10,10,10,10,10,10,0, 10,10,10,10,10,10,10,10,10,0 ],
+    [0, 10,1, 0, 0, 0, 0, 0, 6, 10,0, 10,8, 0, 0, 0, 0, 0, 2, 10,0 ],
+    [0, 10,0, 10,10,10,10,10,10,10,0, 10,10,10,10,10,10,10,0, 10,0 ],
+    [0, 10,0, 11,8, 0, 0, 0, 6, 10,0, 10,8, 0, 0, 0, 6, 11,0, 10,0 ],
+    [0, 10,0, 10,10,10,10,10,10,10,0, 10,10,10,10,10,10,10,0, 10,0 ],
+    [0, 10,4, 0, 0, 0, 0, 0, 6, 10,7, 10,8, 0, 0, 0, 0, 0, 3, 10,0 ],
+    [0, 10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,0 ],
+    [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3 ]
 ]
 
+var car = {
+    x: 1,
+    y: 1
+}
+
+
+function displayCar(){
+    document.getElementById('car').style.left = car.x*20+"px";
+    document.getElementById('car').style.top = car.y*20+"px";
+}
+
+function displayMap(){
+    var output = '';
+    for(var i=0; i<map.length; i++){
+        output += "\n<div class='row'>\n"
+        for(var j=0; j<map[i].length; j++){
+
+            if(map[i][j] == 0)
+                output += "<div class='brick'></div>";
+            else if(map[i][j] == 1)
+                output += "<div class='brick lefttop'></div>";
+            else if(map[i][j] == 2)
+                output += "<div class='brick righttop'></div>";
+            else if(map[i][j] == 3)
+                output += "<div class='brick rightbottom'></div>";
+            else if(map[i][j] == 4)
+                output += "<div class='brick leftbottom'></div>";
+            else if(map[i][j] == 5)
+                output += "<div class='brick top'></div>";
+            else if(map[i][j] == 6)
+                output += "<div class='brick right'></div>";
+            else if(map[i][j] == 7)
+                output += "<div class='brick bottom'></div>";
+            else if(map[i][j] == 8)
+                output += "<div class='brick left'></div>";
+
+            else if(map[i][j] == 9)
+                output += "<div class='empty'></div>";
+            else if(map[i][j] == 10)
+                output += "<div class='coin'></div>";
+            else if(map[i][j] == 11)
+                output += "<div class='cherries'></div>";
+        }
+        output += "\n</div>"
+    }
+    $('#map').html(output);
+}
+
+
+document.onkeydown = function(e) {
+
+    if (e.keyCode == 37 && (map[car.y][car.x - 1] == 9 || map[car.y][car.x - 1] == 10 || map[car.y][car.x - 1] == 11)) {
+        $('#car').removeClass('right');
+        $('#car').removeClass('up');
+        $('#car').removeClass('down');
+        $('#car').addClass('left');
+        car.x--;
+    }
+
+    else if (e.keyCode == 39 && (map[car.y][car.x + 1] == 9 || map[car.y][car.x + 1] == 10 || map[car.y][car.x + 1] == 11)) {
+        $('#car').removeClass('left');
+        $('#car').removeClass('up');
+        $('#car').removeClass('down');
+        $('#car').addClass('right');
+        car.x++;
+    }
+
+    else if (e.keyCode == 38 && (map[car.y - 1][car.x] == 9 || map[car.y - 1][car.x] == 10 || map[car.y - 1][car.x] == 11)) {
+        $('#car').removeClass('right');
+        $('#car').removeClass('up');
+        $('#car').removeClass('left');
+        $('#car').addClass('down');
+        car.y--;
+    }
+
+    else if (e.keyCode == 40 && (map[car.y + 1][car.x] == 9 || map[car.y + 1][car.x] == 10 || map[car.y + 1][car.x] == 11)) {
+        $('#car').removeClass('right');
+        $('#car').removeClass('left');
+        $('#car').removeClass('down');
+        $('#car').addClass('up');
+        car.y++;
+    }
+    displayCar()
+}
 
 
 
-var game1 = new Game(document.querySelector('.game-container'), exampleArr)
+    $(document).ready(function(){
+    displayMap();
+    displayCar();
 
+
+
+
+})

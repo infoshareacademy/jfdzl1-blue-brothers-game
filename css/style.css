@@ -1,15 +1,33 @@
-#background {
-    position: relative;
-
-
+body{
+    background-color: black;
+    padding: 0px;
+    margin: 0px;
 }
 
-#player {
+
+div.row {
+    height:20px;
+}
+div.row div{
+    width: 20px;
+    height: 20px;
+
+    display: inline-block;
+    margin: 0px;
+}
+
+
+div.brick{
+    background-color: white;
+}
+
+div#car{
+    background-image: url(../image/car_red.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
     position: absolute;
-    left: 1100px;
-    top: 190px;
 }
 
-.game {
-    text-align: center;
-}
