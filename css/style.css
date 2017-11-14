@@ -31,3 +31,14 @@ div#car{
     position: absolute;
 }
 
+div#score{
+    border: 1px solid white;
+    width: 30px;
+    height: 30px;
+    color: white;
+    padding: 7px;
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    left: 450px;
+}
