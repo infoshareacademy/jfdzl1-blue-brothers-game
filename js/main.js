@@ -57,7 +57,7 @@ function displayMap(){
             else if(map[i][j] == 10)
                 output += "<div class='coin'></div>";
             else if(map[i][j] == 11)
-                output += "<div class='cherries'></div>";
+                output += "<div class='fuel'></div>";
         }
         output += "\n</div>"
     }
