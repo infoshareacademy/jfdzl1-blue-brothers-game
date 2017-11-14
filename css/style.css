@@ -31,3 +31,9 @@ div#car{
     position: absolute;
 }
 
+div.fuel{
+    background-image: url(../image/fuel.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
