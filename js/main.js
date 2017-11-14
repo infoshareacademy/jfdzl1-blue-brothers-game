@@ -15,24 +15,23 @@ var map = [
     [0, 10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,0 ],
     [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3 ]
 ]
-
 var car = {
     x: 1,
     y: 1
 }
-
-
+var score = 0 ;
 function displayCar(){
     document.getElementById('car').style.left = car.x*20+"px";
     document.getElementById('car').style.top = car.y*20+"px";
 }
-
+function displayScore(){
+    document.getElementById('score').innerHTML = score;
+}
 function displayMap(){
     var output = '';
     for(var i=0; i<map.length; i++){
         output += "\n<div class='row'>\n"
         for(var j=0; j<map[i].length; j++){
-
             if(map[i][j] == 0)
                 output += "<div class='brick'></div>";
             else if(map[i][j] == 1)
@@ -51,7 +50,6 @@ function displayMap(){
                 output += "<div class='brick bottom'></div>";
             else if(map[i][j] == 8)
                 output += "<div class='brick left'></div>";
-
             else if(map[i][j] == 9)
                 output += "<div class='empty'></div>";
             else if(map[i][j] == 10)
@@ -63,10 +61,7 @@ function displayMap(){
     }
     $('#map').html(output);
 }
-
-
 document.onkeydown = function(e) {
-
     if (e.keyCode == 37 && (map[car.y][car.x - 1] == 9 || map[car.y][car.x - 1] == 10 || map[car.y][car.x - 1] == 11)) {
         $('#car').removeClass('right');
         $('#car').removeClass('up');
@@ -74,7 +69,6 @@ document.onkeydown = function(e) {
         $('#car').addClass('left');
         car.x--;
     }
-
     else if (e.keyCode == 39 && (map[car.y][car.x + 1] == 9 || map[car.y][car.x + 1] == 10 || map[car.y][car.x + 1] == 11)) {
         $('#car').removeClass('left');
         $('#car').removeClass('up');
@@ -82,7 +76,6 @@ document.onkeydown = function(e) {
         $('#car').addClass('right');
         car.x++;
     }
-
     else if (e.keyCode == 38 && (map[car.y - 1][car.x] == 9 || map[car.y - 1][car.x] == 10 || map[car.y - 1][car.x] == 11)) {
         $('#car').removeClass('right');
         $('#car').removeClass('up');
@@ -90,7 +83,6 @@ document.onkeydown = function(e) {
         $('#car').addClass('down');
         car.y--;
     }
-
     else if (e.keyCode == 40 && (map[car.y + 1][car.x] == 9 || map[car.y + 1][car.x] == 10 || map[car.y + 1][car.x] == 11)) {
         $('#car').removeClass('right');
         $('#car').removeClass('left');
@@ -98,16 +90,15 @@ document.onkeydown = function(e) {
         $('#car').addClass('up');
         car.y++;
     }
+    if(map[car.y][car.x] == 11){
+        map[car.y][car.x] = 9;
+        score+=50;
+        displayMap();
+        displayScore();
+    }
     displayCar()
 }
-
-
-
     $(document).ready(function(){
     displayMap();
     displayCar();
-
-
-
-
 })
