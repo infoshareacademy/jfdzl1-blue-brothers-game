@@ -42,3 +42,10 @@ div#score{
     top: 10px;
     left: 450px;
 }
+
+div.fuel{
+    background-image: url(../image/fuel.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
