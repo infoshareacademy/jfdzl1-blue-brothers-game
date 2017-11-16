@@ -1,5 +1,5 @@
 body{
-    background-color: black;
+    background-color: darkgray;
     padding: 0px;
     margin: 0px;
 }
@@ -19,6 +19,11 @@ div.row div{
 
 div.brick{
     background-color: white;
+
+}
+
+div.road {
+    background-color: darkgray;
 }
 
 div#car{
