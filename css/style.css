@@ -43,9 +43,35 @@ div#score{
     left: 450px;
 }
 
-div.fuel{
+div.fuel {
     background-image: url(../image/fuel.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+}
 
+.down{
+
+    transform: rotate(-90deg);
+
+}
+.up{
+
+    transform: rotate(90deg);
+}
+.right{
+
+}
+.left{
+    transform: rotate(180deg);
+}
+
+div#police{
+    background-color: blue;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+}
