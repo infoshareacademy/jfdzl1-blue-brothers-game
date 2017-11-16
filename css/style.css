@@ -31,7 +31,7 @@ div#car{
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    width: 20px;
+    width: 41px;
     height: 20px;
     position: absolute;
 }
@@ -48,9 +48,26 @@ div#score{
     left: 450px;
 }
 
-div.fuel{
+div.fuel {
     background-image: url(../image/fuel.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 
+}
+
+.down{
+
+    transform: rotate(-90deg);
+
+}
+.up{
+
+    transform: rotate(90deg);
+}
+.right{
+
+}
+.left{
+    transform: rotate(180deg);
+}

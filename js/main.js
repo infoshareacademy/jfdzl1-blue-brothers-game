@@ -20,8 +20,10 @@ var car = {
     y: 1
 }
 var score = 0 ;
+
+
 function displayCar(){
-    document.getElementById('car').style.left = car.x*20+"px";
+    document.getElementById('car').style.left = car.x*19+"px";
     document.getElementById('car').style.top = car.y*20+"px";
 }
 function displayScore(){
