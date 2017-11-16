@@ -21,11 +21,11 @@ var car = {
 }
 var score = 0 ;
 
+
 var police = {
     x: 19,
     y: 13
 }
-
 
 
 function displayCar(){
