@@ -22,23 +22,10 @@ var car = {
 var score = 0 ;
 
 
-var police = {
-    x: 19,
-    y: 13
-}
-
-
 function displayCar(){
     document.getElementById('car').style.left = car.x*19+"px";
     document.getElementById('car').style.top = car.y*20+"px";
 }
-
-function displayPolice(){
-    document.getElementById('police').style.left = police.x*20+"px";
-    document.getElementById('police').style.top = police.y*20+"px";
-}
-
-
 function displayScore(){
     document.getElementById('score').innerHTML = score;
 }
@@ -113,54 +100,6 @@ document.onkeydown = function(e) {
     }
     displayCar()
 }
-
-
-function getRandom() {
-    var random = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
-    return random;
-}
-
-var currentDirection = 1;
-
-function PoliceMove() {
-    var newDirection = getRandom();
-
-
-    if (
-
-    ((currentDirection == 1 || currentDirection == 2) && (map[police.y + 1][police.x] == 9 || map[police.y + 1][police.x] == 10 || map[police.y + 1][police.x] == 11 || map[police.y + 1][police.x] == 12 || map[police.y - 1][police.x] == 9 || map[police.y - 1][police.x] == 10 || map[police.y - 1][police.x] == 11 || map[police.y - 1][police.x] == 12))
-    ||
-
-    ((currentDirection == 3 || currentDirection == 4) && (map[police.y][police.x + 1] == 9 || map[police.y][police.x + 1] == 10 || map[police.y][police.x + 1] == 11 || map[police.y][police.x + 1] == 12 || map[police.y][police.x - 1] == 9 || map[police.y][police.x - 1] == 10 || map[police.y][police.x - 1] == 11 || map[police.y][police.x - 1] == 12))
-    ) {
-
-        while (newDirection == currentDirection) {
-            newDirection = getRandom();
-        }
-
-        currentDirection = newDirection;
-    }
-
-    if (currentDirection == 1 && (map[police.y][police.x - 1] == 9 || map[police.y][police.x - 1] == 10 || map[police.y][police.x - 1] == 11 || map[police.y][police.x - 1] == 12)) {
-        police.x--;
-
-    } else if (currentDirection == 2 && (map[police.y][police.x + 1] == 9 || map[police.y][police.x + 1] == 10 || map[police.y][police.x + 1] == 11 || map[police.y][police.x + 1] == 12)) {
-
-        police.x++;
-    } else if (currentDirection == 3 && (map[police.y - 1][police.x] == 9 || map[police.y - 1][police.x] == 10 || map[police.y - 1][police.x] == 11 || map[police.y - 1][police.x] == 12)) {
-
-        police.y--;
-    } else if (currentDirection == 4 && (map[police.y + 1][police.x] == 9 || map[police.y + 1][police.x] == 10 || map[police.y + 1][police.x] == 11 || map[police.y + 1][police.x] == 12)) {
-
-        police.y++;
-    }
-
-    displayPolice();
-
-}
-
-setInterval(PoliceMove, 500)
-
     $(document).ready(function(){
     displayMap();
     displayCar();
