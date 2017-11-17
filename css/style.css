@@ -11,8 +11,19 @@ body {
 
     position:relative;
     margin-top: 5vw;
+    background-image: url("../image/obrazek.png") ;
+    background-repeat: no-repeat;
 }
 
+div.brick{
+    background-color: transparent;
+
+
+}
+
+div.road {
+    background-color: transparent;
+}
 
 
 div.row {
