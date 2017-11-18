@@ -176,7 +176,7 @@ function checkend() {
 }
 
 
-setInterval(PoliceMove, 500)
+setInterval(PoliceMove, 200)
 
 $(document).ready(function () {
     displayMap();
