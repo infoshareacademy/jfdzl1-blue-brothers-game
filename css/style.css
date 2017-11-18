@@ -118,6 +118,16 @@ div#police2{
     position: absolute;
 }
 
+div#police3{
+    background-color: blue;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+}
+
 
 
 .down{

@@ -37,6 +37,12 @@ var police2 = {
     y: 13
 }
 
+// trzecai policja pozycja
+var police3 = {
+    x: 19,
+    y: 1
+}
+
 
 
 function displayCar() {
@@ -52,6 +58,11 @@ function displayPolice() {
 function displayPolice2() {
     document.getElementById('police2').style.left = police2.x * 20 + "px";
     document.getElementById('police2').style.top = police2.y * 20 + "px";
+}
+// trzecia policja wielkość diva
+function displayPolice3() {
+    document.getElementById('police3').style.left = police2.x * 20 + "px";
+    document.getElementById('police3').style.top = police2.y * 20 + "px";
 }
 
 
@@ -226,6 +237,44 @@ function PoliceMove2() {
     checkend();
 }
 
+//trzecia policja ruch policji
+function PoliceMove3() {
+    var newDirection = getRandom();
+
+
+    if (
+
+        ((currentDirection == 1 || currentDirection == 2) && (map[police3.y + 1][police3.x] == 9 || map[police3.y + 1][police3.x] == 10 || map[police3.y + 1][police3.x] == 11 || map[police3.y + 1][police3.x] == 12 || map[police3.y - 1][police3.x] == 9 || map[police3.y - 1][police3.x] == 10 || map[police3.y - 1][police3.x] == 11 || map[police3.y - 1][police3.x] == 12))
+        ||
+
+        ((currentDirection == 3 || currentDirection == 4) && (map[police3.y][police3.x + 1] == 9 || map[police3.y][police3.x + 1] == 10 || map[police3.y][police3.x + 1] == 11 || map[police3.y][police3.x + 1] == 12 || map[police3.y][police3.x - 1] == 9 || map[police3.y][police3.x - 1] == 10 || map[police3.y][police3.x - 1] == 11 || map[police3.y][police3.x - 1] == 12))
+    ) {
+
+        while (newDirection == currentDirection) {
+            newDirection = getRandom();
+        }
+
+        currentDirection = newDirection;
+    }
+
+    if (currentDirection == 1 && (map[police3.y][police3.x - 1] == 9 || map[police3.y][police3.x - 1] == 10 || map[police3.y][police3.x - 1] == 11 || map[police3.y][police3.x - 1] == 12)) {
+        police3.x--;
+
+    } else if (currentDirection == 2 && (map[police3.y][police3.x + 1] == 9 || map[police3.y][police3.x + 1] == 10 || map[police3.y][police3.x + 1] == 11 || map[police3.y][police3.x + 1] == 12)) {
+
+        police3.x++;
+    } else if (currentDirection == 3 && (map[police3.y - 1][police3.x] == 9 || map[police3.y - 1][police3.x] == 10 || map[police3.y - 1][police3.x] == 11 || map[police3.y - 1][police3.x] == 12)) {
+
+        police3.y--;
+    } else if (currentDirection == 4 && (map[police3.y + 1][police3.x] == 9 || map[police3.y + 1][police3.x] == 10 || map[police3.y + 1][police3.x] == 11 || map[police3.y + 1][police3.x] == 12)) {
+
+        police3.y++;
+    }
+
+    displayPolice3();
+    checkend();
+}
+
 
 
 function checkend() {
@@ -236,6 +285,12 @@ function checkend() {
     }
 //druga policja wysypanie się po zderzeniu
     if ((car.x == police2.x) && (car.y == police2.y)) {
+        gameover("Crashed");;
+
+    }
+
+    //trzecia policja wysypanie się po zderzeniu
+    if ((car.x == police3.x) && (car.y == police3.y)) {
         gameover("Crashed");;
 
     }
@@ -265,6 +320,9 @@ $('#start-button').on('click' , function() {
 setInterval(PoliceMove, 250)
 // druga policja szybkość porusania się
 setInterval(PoliceMove2, 250)
+// trzecia policja szybkość porusania się
+setInterval(PoliceMove3, 250)
+
 
 $(document).ready(function () {
     displayMap();
