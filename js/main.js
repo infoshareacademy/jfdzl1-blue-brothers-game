@@ -200,11 +200,13 @@ function gameover(msg) {
     car.x = 1;
     car.y = 1;
     score = 500;
-    displayCar();
+    displayCar()
 
 }
 
-
+$('#start-button').on('click' , function() {
+        $('#start-screen').addClass('hidden');
+});
 
 setInterval(PoliceMove, 500)
 
