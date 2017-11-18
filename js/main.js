@@ -74,7 +74,7 @@ function displayMap() {
             else if (map[i][j] == 9)
                 output += "<div class='empty'></div>";
             else if (map[i][j] == 10)
-                output += "<div class='road'></div>";
+                output += "<div class='drop'></div>";
             else if (map[i][j] == 11)
                 output += "<div class='fuel'></div>";
         }
@@ -117,6 +117,14 @@ document.onkeydown = function (e) {
         score -= 10;
 
     }
+
+    if (map[car.y][car.x] == 10){
+        map[car.y][car.x] = 9;
+        score+=5;
+        displayMap();
+        displayScore();
+    }
+
     if (map[car.y][car.x] == 11) {
         map[car.y][car.x] = 9;
         score += 50;
