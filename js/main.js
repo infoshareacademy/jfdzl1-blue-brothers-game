@@ -132,7 +132,7 @@ document.onkeydown = function (e) {
         displayScore();
     }
     displayCar();
-    checkend()
+    checkend();
     displayScore();
 
 };
