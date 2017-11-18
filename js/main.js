@@ -170,4 +170,4 @@ $(document).ready(function(){
     displayMap();
     displayCar();
     displayScore();
-})
+});
