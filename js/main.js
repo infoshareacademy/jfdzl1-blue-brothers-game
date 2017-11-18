@@ -208,7 +208,9 @@ function gameover(msg) {
     car.x = 1;
     car.y = 1;
     score = 500;
-    displayCar()
+    displayMap();
+    displayCar();
+    displayScore();
 
 }
 
