@@ -44,7 +44,7 @@ div.row div{
 
 
 div.brick{
-    background-color: white;
+    background-image: url("../image/brick.png") ;
 
 }
 
@@ -70,7 +70,7 @@ div#score{
     padding: 7px;
     text-align: center;
     position: absolute;
-    top: 20px;
+    top: -50px;
     left: 450px;
 }
 

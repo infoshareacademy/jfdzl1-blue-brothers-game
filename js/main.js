@@ -23,7 +23,7 @@ var car = {
     x: 1,
     y: 1
 }
-var score = 0;
+var score = 500;
 
 
 var police = {
@@ -90,6 +90,7 @@ document.onkeydown = function (e) {
         $('#car').removeClass('down');
         $('#car').addClass('left');
         car.x--;
+        score -= 10;
     }
     else if (e.keyCode == 39 && (map[car.y][car.x + 1] == 9 || map[car.y][car.x + 1] == 10 || map[car.y][car.x + 1] == 11)) {
         $('#car').removeClass('left');
@@ -97,6 +98,7 @@ document.onkeydown = function (e) {
         $('#car').removeClass('down');
         $('#car').addClass('right');
         car.x++;
+        score -= 10;
     }
     else if (e.keyCode == 38 && (map[car.y - 1][car.x] == 9 || map[car.y - 1][car.x] == 10 || map[car.y - 1][car.x] == 11)) {
         $('#car').removeClass('right');
@@ -104,6 +106,7 @@ document.onkeydown = function (e) {
         $('#car').removeClass('left');
         $('#car').addClass('down');
         car.y--;
+        score -= 10;
     }
     else if (e.keyCode == 40 && (map[car.y + 1][car.x] == 9 || map[car.y + 1][car.x] == 10 || map[car.y + 1][car.x] == 11)) {
         $('#car').removeClass('right');
@@ -111,6 +114,8 @@ document.onkeydown = function (e) {
         $('#car').removeClass('down');
         $('#car').addClass('up');
         car.y++;
+        score -= 10;
+
     }
     if (map[car.y][car.x] == 11) {
         map[car.y][car.x] = 9;
@@ -120,6 +125,7 @@ document.onkeydown = function (e) {
     }
     displayCar();
     checkend()
+    displayScore();
 
 };
 
@@ -171,15 +177,33 @@ function PoliceMove() {
 
 }
 
+
+
 function checkend() {
     console.log(police.x , police.y, car.x, car.y);
     if ((car.x == police.x) && (car.y == police.y)) {
-        alert("Wasted!");
+        gameover("Crashed");;
+
+    }
+
+
+    if (score == 0)  {
+        gameover("End fuel");
     }
 
 
 
 }
+
+function gameover(msg) {
+    alert("Wasted!" + ' ' + msg);
+    car.x = 1;
+    car.y = 1;
+    score = 500;
+    displayCar();
+
+}
+
 
 
 setInterval(PoliceMove, 500)
