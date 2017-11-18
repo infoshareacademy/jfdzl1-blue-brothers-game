@@ -34,7 +34,7 @@ var police = {
 
 
 function displayCar() {
-    document.getElementById('car').style.left = car.x * 19 + "px";
+    document.getElementById('car').style.left = car.x * 20 + "px";
     document.getElementById('car').style.top = car.y * 20 + "px";
 }
 
@@ -165,14 +165,20 @@ function PoliceMove() {
     }
 
     displayPolice();
+    checkend();
+
 
 
 }
 
 function checkend() {
+    console.log(police.x , police.y, car.x, car.y);
     if ((car.x == police.x) && (car.y == police.y)) {
         alert("Wasted!");
     }
+
+
+
 }
 
 
@@ -182,5 +188,5 @@ $(document).ready(function () {
     displayMap();
     displayCar();
     displayScore();
-    checkend()
+
 })
