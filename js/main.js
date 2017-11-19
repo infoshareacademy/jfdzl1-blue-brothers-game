@@ -196,7 +196,7 @@ function checkend() {
 
 
     if (score == 0)  {
-        gameover("End fuel");
+        gameover("End fuel!");
     }
 
 
