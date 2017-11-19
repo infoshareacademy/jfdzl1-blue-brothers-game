@@ -14,7 +14,7 @@ var map = [
     [0, 10, 4, 0, 0, 0, 0, 0, 6, 10, 7, 10, 8, 0, 0, 0, 0, 0, 3, 10, 0],
     [0, 11, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 11, 0],
     [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3],
-    [0, 11, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0],
+    [0, 11, 10, 10, 10, 10, 10, 10, 11, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0],
     [0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 11, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3]
 
@@ -23,7 +23,7 @@ var car = {
     x: 1,
     y: 1
 }
-var score = 500;
+var score = 1;
 
 
 var police = {
@@ -113,7 +113,7 @@ document.onkeydown = function (e) {
         $('#car').removeClass('down');
         $('#car').addClass('left');
         car.x--;
-        score -= 10;
+        //score -= 10;
     }
     else if (e.keyCode == 39 && (map[car.y][car.x + 1] == 9 || map[car.y][car.x + 1] == 10 || map[car.y][car.x + 1] == 11)) {
         $('#car').removeClass('left');
@@ -121,7 +121,7 @@ document.onkeydown = function (e) {
         $('#car').removeClass('down');
         $('#car').addClass('right');
         car.x++;
-        score -= 10;
+        //score -= 10;
     }
     else if (e.keyCode == 38 && (map[car.y - 1][car.x] == 9 || map[car.y - 1][car.x] == 10 || map[car.y - 1][car.x] == 11)) {
         $('#car').removeClass('right');
@@ -129,7 +129,7 @@ document.onkeydown = function (e) {
         $('#car').removeClass('left');
         $('#car').addClass('down');
         car.y--;
-        score -= 10;
+        //score -= 10;
     }
     else if (e.keyCode == 40 && (map[car.y + 1][car.x] == 9 || map[car.y + 1][car.x] == 10 || map[car.y + 1][car.x] == 11)) {
         $('#car').removeClass('right');
@@ -137,7 +137,7 @@ document.onkeydown = function (e) {
         $('#car').removeClass('down');
         $('#car').addClass('up');
         car.y++;
-        score -= 10;
+        //score -= 10;
 
     }
 
@@ -150,7 +150,7 @@ document.onkeydown = function (e) {
 
     if (map[car.y][car.x] == 11) {
         map[car.y][car.x] = 9;
-        score += 50;
+        score += 100;
         displayMap();
         displayScore();
     }
@@ -310,7 +310,20 @@ function checkend() {
         gameover("End fuel!");
     }
 
+    if (score == 2081){
+        win("Pozdro");
+    }
 
+
+
+}
+
+function win(msg) {
+    alert("You WIN" + ' ' + msg);
+    score = 2081;
+    displayMap();
+    displayCar();
+    displayScore();
 
 }
 
