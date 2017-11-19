@@ -37,11 +37,11 @@ var police2 = {
     y: 13
 }
 
-// trzecai policja pozycja
+/* trzecai policja pozycja
 var police3 = {
     x: 19,
     y: 1
-}
+}*/
 
 
 
@@ -237,7 +237,7 @@ function PoliceMove2() {
     checkend();
 }
 
-//trzecia policja ruch policji
+/*trzecia policja ruch policji
 function PoliceMove3() {
     var newDirection = getRandom();
 
@@ -273,7 +273,7 @@ function PoliceMove3() {
 
     displayPolice3();
     checkend();
-}
+}*/
 
 
 
@@ -289,11 +289,11 @@ function checkend() {
 
     }
 
-    //trzecia policja wysypanie się po zderzeniu
+    /*trzecia policja wysypanie się po zderzeniu
     if ((car.x == police3.x) && (car.y == police3.y)) {
         gameover("Crashed");;
 
-    }
+    }*/
 
 
     if (score == 0)  {
@@ -321,7 +321,7 @@ setInterval(PoliceMove, 250)
 // druga policja szybkość porusania się
 setInterval(PoliceMove2, 250)
 // trzecia policja szybkość porusania się
-setInterval(PoliceMove3, 250)
+//setInterval(PoliceMove3, 250)
 
 
 $(document).ready(function () {
