@@ -11,6 +11,8 @@ BB Game
 Built from develop: [click here](http://blue-brothers.jfdzl1.is-academy.pl/game)
 See also our project [page](http://blue-brothers.jfdzl1.is-academy.pl) and [repo](https://github.com/infoshareacademy/jfdzl1-blue-brothers-www)
 
+JFDZL1 projects: https://github.com/infoshareacademy/jfdzl1-projects
+
 ## Other projects
 * Project website: [demo](http://blue-brothers.jfdzl1.is-academy.pl), [repo](https://github.com/infoshareacademy/jfdzl1-blue-brothers-www)
 * Application: [demo](http://app.blue-brothers.jfdzl1.is-academy.pl), [repo](https://github.com/infoshareacademy/jfdzl1-blue-brothers-app)
